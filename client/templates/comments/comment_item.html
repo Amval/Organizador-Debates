@@ -1,0 +1,16 @@
+<template name="commentItem">
+    <div class="ui segment">
+        <div class="comment">
+            <div class="content">
+                <a class="author">{{whoIs owner}}</a>
+                <div class="metadata">
+                    {{formatDate createdAt}}
+                </div>
+                <div class="text">
+                    {{content}}
+                </div>
+            </div>        
+        </div>        
+    </div>
+
+</template>

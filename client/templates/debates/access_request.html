@@ -1,0 +1,15 @@
+<template name="accessRequest">
+    <div class="ui segment">
+        <h4>Los siguientes usuarios solicitan acceso:</h4>
+        <p>Pincha en su nombre para concedérselo</p>
+        <div class="horizontal list">
+            {{#each membershipRequest}}
+                <div class="item">
+                    <div class="ui button grant-access" id="{{this}}"><i class="user icon"></i>
+                        {{whoIs this}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</template>     

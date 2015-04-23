@@ -1,0 +1,19 @@
+<template name="ideaItem">
+    <div class="ui card">
+        <div class="content">
+            <div class="header">
+               <a href="{{pathFor 'ideaPage'}}">{{title}}</a> 
+            </div>
+            <div class="meta">
+            <span>
+                <i class="user icon"></i>
+                {{whoIs owner}}
+            </span>
+            </div>
+            <br>
+            <div class="description">
+                {{description}}
+            </div>
+        </div>
+    </div>
+</template>
