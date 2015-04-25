@@ -1,0 +1,44 @@
+/* Set the width of the grid */
+.frame {
+  width: 100%;
+  margin: 0px auto
+}
+
+/* Attribute selector */
+[class*='col-'] {
+  padding: 0.3em
+}
+
+
+/* Clearfix */
+.frame:after {
+  content: "";
+  display: table;
+  clear: both
+}
+
+$col: 16;
+
+/* 12 columns grid */
+@for $i from 1 through $col {
+  .col-#{$i} { width: percentage($i/$col); }
+}
+
+
+/* Landscape mobile & down */
+@media (max-width: 40em) {
+  [class*='col-'] {
+    width: 100%;
+  }
+}
+
+
+/* Landscape to small desktop */
+@media (min-width: 40em) and (max-width: 68.750em) {
+  .col-1, .col-2 {
+    width: 50%;
+  }
+  .col-3, .col-4 {
+    width: 100%;
+  }
+}
