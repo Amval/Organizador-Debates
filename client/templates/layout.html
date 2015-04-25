@@ -1,14 +1,14 @@
 <template name="layout">
 	<body>
-		<div class="frame">
-			<div class="ui menu">
-				<a class="active item" href="{{pathFor 'debatesList'}}">Organizador de Debates</a>
-				<div class="right menu">
-					{{> atNavButton}}
-				</div>
+		<div class="ui menu">
+			<a class="active item" href="{{pathFor 'debatesList'}}">Organizador de Debates</a>
+			<div class="right menu">
+				{{> atNavButton}}
 			</div>
-			<div class="frame">
-						{{> yield}}
+		</div>
+		<div class="ui centered grid">
+			<div class="fifteen wide column">
+					{{> yield}}
 			</div>
 		</div>
 	</body>

@@ -9,23 +9,16 @@
 			<div class="ui segment">
                 <h2 class="ui header">{{title}}</h2>
                 <div class="sub header">
-                    <i class="calendar outline icon pull right"></i> Creado el {{formatDate createdAt}} por
+                    <i class="calendar outline icon pull right"></i> Creado el {{formatDate createdAt}} por 
                     <i class="user icon"></i> {{whoIs owner}}
                 </div>
                 <h4 class="ui horizontal header divider"><i class="newspaper icon"></i></h4>
                 <p>{{description}}</p>
-
+				
             	<h4 class="ui horizontal header divider"><i class="idea icon"></i></h4>
-							{{#masonryContainer id="debateList-container" itemSelector=".col-4"}}
-					        {{#each ideas}}
-					                {{#masonryElement "debateList-container"}}
-					                    <div class="col-4">
-					                    {{> ideaItem}}
-					                    </div>
-					                {{/masonryElement}}
-					        {{/each}}
-					    {{/masonryContainer}}
-
+            	{{#each ideas}}
+            	  {{> ideaItem}}
+            	{{/each}}
             	<a class="ui green button" id="new-idea"><i class="idea icon"></i> Añadir Idea</a>
             	{{#if newIdea}}
             	  {{>yield "newIdea"}}
