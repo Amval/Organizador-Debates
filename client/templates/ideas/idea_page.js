@@ -5,8 +5,8 @@ Template.ideaPage.created = function() {
 
 Template.ideaPage.helpers({
     newComment: function() {
-      return Template.instance().newComment.get();  
-    }, 
+      return Template.instance().newComment.get();
+    },
     comments: function() {
         return Comments.find();
     }
@@ -15,6 +15,6 @@ Template.ideaPage.helpers({
 
 Template.ideaPage.events({
     'click #new-comment': function(e) {
-        Template.instance().newComment.set(!Template.instance().newComment.get());
+        _.switch(Template.instance().newComment);
     }
 })

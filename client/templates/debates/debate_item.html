@@ -1,44 +1,24 @@
 <template name="debateItem">
-	<div class="ui card">
-        <div class="content">
-            <div class="header">
-                <a href="{{pathFor 'debatePage'}}">{{title}}</a>
-            </div>
-            <div class="meta">
-                <span>
-                    <i class="user icon">
-                    </i>
-                    {{whoIs owner}}
-                </span>
-            </div>
-            <br>    
-            <div class="description">
-                {{description}}
-            </div>
-        </div>  
-        <div class="extra content">
-            <span>
-                <i class="calendar outline icon pull right"></i> {{formatDate createdAt}}
-            </span>
-        </div>
-        {{#if isMember}}
-            <div class="ui bottom attached green button">
-              <i class="user icon"></i>
-              Eres miembro
-            </div>
-        {{else}}
-            {{#if hasRequested}}
-                <div class="ui bottom attached red button cancel">
-                  <i class="mail icon"></i>
-                  Solicitud realizada
-                </div>
-            {{else}}
-                <div class="ui bottom attached button join">
-                  <i class="add user icon"></i>
-                  Participar
-                </div>
-            {{/if}}
-        {{/if}}
-
+  <div class="ui segment">
+    <div class="ui grid">
+      <div class="one wide column">
+        {{> avatar _id =owner}}
+      </div>
+      <div class="seven wide column">
+        <a href="{{pathFor 'debatePage'}}">{{title}}</a>
+      </div>
+      <div class="two wide column">
+      </div>
+      <div class="two wide column">
+        <p>
+          {{ideasCount}}
+        </p>
+      </div>
+      <div class="two wide column">
+      </div>
+      <div class="two wide column">
+      </div>
     </div>
+  </div>
+
 </template>

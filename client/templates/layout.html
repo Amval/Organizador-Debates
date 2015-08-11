@@ -3,6 +3,11 @@
 		<div class="ui menu">
 			<a class="active item" href="{{pathFor 'debatesList'}}">Organizador de Debates</a>
 			<div class="right menu">
+				{{#if currentUser}}
+				<a class="item" href="">
+					{{> avatar currentUser}}
+				</a>
+				{{/if}}
 				{{> atNavButton}}
 			</div>
 		</div>

@@ -1,15 +1,36 @@
 <template name="debatesList">
-    <a class="ui blue button" href="{{pathFor 'newDebate'}}">Nuevo Debate</a>
-    <br>
-        {{#masonryContainer id="debateList-container" itemSelector=".debate"}}
+  <div class="ui centered grid container">
+    <div class="fourteen wide column">
+      <a class="ui blue button" href="{{pathFor 'newDebate'}}">Nuevo Debate</a>
+      <br>
+      <div class="ui stacked segments">
+        <div class="ui segment">
+          <div class="ui grid">
+            <div class="eight wide column">
+            <i class="newspaper icon"></i> Debate
+            </div>
+            <div class="two wide column">
+              <i class="fire icon"></i> Actividad
+            </div>
+            <div class="two wide column">
+              <i class="idea icon"></i> Ideas
+            </div>
+            <div class="two wide column">
+              <i class="comments outline icon"></i> Comentarios
+            </div>
+            <div class="two wide column">
+              <i class="users icon"></i> Usuarios
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui stacked segments">
         {{#each debates}}
-                {{#masonryElement "debateList-container"}}
-                    <div class="debate">
-                    {{> debateItem}}
-                    </div>
-                {{/masonryElement}}
+          {{> debateItem}}
         {{/each}}
-    {{/masonryContainer}} 
-       
-        
+      </div>
+    </div>
+    </div>
+
+
 </template>

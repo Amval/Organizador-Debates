@@ -2,7 +2,7 @@
     <div class="ui card">
         <div class="content">
             <div class="header">
-               <a href="{{pathFor 'ideaPage'}}">{{title}}</a> 
+               <a href="{{pathFor 'ideaPage'}}">{{title}}</a>
             </div>
             <div class="meta">
             <span>
@@ -12,7 +12,7 @@
             </div>
             <br>
             <div class="description">
-                {{description}}
+              {{#markdown}}{{description}}{{/markdown}}
             </div>
         </div>
     </div>

@@ -1,0 +1,13 @@
+<template name="debatesList2">
+    <a class="ui blue button" href="{{pathFor 'newDebate'}}">Nuevo Debate</a>
+    <br>
+    {{#masonryContainer id="debateList-container" itemSelector=".debate"}}
+    {{#each debates}}
+            {{#masonryElement "debateList-container"}}
+                <div class="debate">
+                {{> debateItem}}
+                </div>
+            {{/masonryElement}}
+    {{/each}}
+    {{/masonryContainer}}
+</template>

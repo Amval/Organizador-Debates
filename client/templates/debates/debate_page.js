@@ -13,11 +13,17 @@ Template.debatePage.helpers({
         }
     },
     newIdea: function() {
-      return Template.instance().newIdea.get()  
-    }, 
+      return Template.instance().newIdea.get()
+    },
     ideas: function() {
-      return Ideas.find();  
-    }, 
+      return Ideas.find();
+    },
+  minimumIdeas: function() {
+    min = 2;
+    ideasCount = Ideas.find({debate: Session.get('currentDebate')}).count();
+    return ideasCount > 2;
+  }
+
 });
 
 
@@ -33,19 +39,25 @@ Template.debatePage.events({
     // Su valor rige la inserción dinámica de un formulario para
     // anyadir nuevas ideas.
     'click #new-idea': function(e) {
-        Template.instance().newIdea.set(!Template.instance().newIdea.get());
-    }, 
+      //Template.instance().newIdea.set(!Template.instance().newIdea.get());
+      _.switch(Template.instance().newIdea);
+    },
 
     'submit form': function(e) {
         e.preventDefault();
 
         var idea = _.processForm(e, IdeaSchema, IdeaAutovalues);
         Ideas.insert(idea, {validationContext: "insertForm"}, function(error, result) {
-            console.log(error)  
+            console.log(error)
         });
 
-        $('.form')[0].reset();
-        this.newIdea.set(false);
+        debateId = Session.get('currentDebate');
+        Debates.update({_id: debateId}, {$inc: {ideasCount: 1}});
 
-    }, 
+        $('.form')[0].reset();
+        Template.instance().newIdea.set(false);
+
+
+
+    },
 });

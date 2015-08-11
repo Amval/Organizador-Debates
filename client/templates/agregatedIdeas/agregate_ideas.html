@@ -1,0 +1,19 @@
+<template name="agregateIdeas">
+  <div class="ui segment">
+    <h2 class="ui header">Agregación de Ideas</h2>
+    <div class="sub header">
+    </div>
+    <h4 class="ui horizontal header divider"><i class="newspaper icon"></i></h4>
+    <div class="celled list">
+      {{#masonryContainer id="ideaList-container" itemSelector=".idea"}}
+        {{#each ideas}}
+          {{#masonryElement "ideaList-container"}}
+              <div class="idea">
+              {{> ideaListItem}}
+              </div>
+          {{/masonryElement}}
+        {{/each}}
+      {{/masonryContainer}}
+    </div>
+  </div>
+</template>

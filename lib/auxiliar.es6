@@ -5,23 +5,26 @@ _.filterSelection = function(array,selection) {
 }
 
 
+_.switch = (object) => {
+  object.set(!object.get())
+};
 
 
-_.processForm = function(e, schemaName, autovalues  ) {
-    
-    var keys = schemaName._schemaKeys;
-    var schema = schemaName._schema;
-    var autoKeys = _.keys(autovalues);
+_.processForm = (e, schemaName, autovalues) => {
+
+    const keys = schemaName._schemaKeys;
+    const schema = schemaName._schema;
+    const autoKeys = _.keys(autovalues);
 
 
-    var result = {};
+    const result = {};
 
-    var formKeys = _.filter(keys, function(key) {
+    const formKeys = _.filter(keys, function(key) {
         return _.has(schema[key], "label");
     });
 
     _.each(formKeys,function(item) {
-        result[item] = $(e.target).find('[name='+item+']').val() 
+        result[item] = $(e.target).find('[name='+item+']').val()
    });
 
     _.each(autoKeys, function(item) {
