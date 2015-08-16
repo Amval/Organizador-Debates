@@ -1,5 +1,5 @@
 Meteor.publish('debates', () => {
-	return Debates.find();
+	return Debates.find({},{sort:{activity: -1}});
 });
 
 Meteor.publish('debate', (id) => {

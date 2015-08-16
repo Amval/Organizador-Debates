@@ -8,6 +8,7 @@
         <a href="{{pathFor 'debatePage'}}">{{title}}</a>
       </div>
       <div class="two wide column">
+        {{formatDate activity}}
       </div>
       <div class="two wide column">
         <p>
@@ -15,8 +16,16 @@
         </p>
       </div>
       <div class="two wide column">
+        {{commentsCount}}
       </div>
       <div class="two wide column">
+        <div class="ui grid">
+          {{#each activeUsers}}
+          <div class="one wide column">
+            {{>avatar _id=this}}
+          </div>
+          {{/each}}
+        </div>
       </div>
     </div>
   </div>

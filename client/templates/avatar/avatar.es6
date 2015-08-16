@@ -7,7 +7,6 @@ Template.avatar.helpers({
   },
   getLetter: (id)=>{
     let letter= Meteor.users.findOne({_id:id}).emails[0].address[0][0].toUpperCase();
-    console.log(letter);
     return letter;
   }
 });

@@ -1,5 +1,7 @@
 Template.registerHelper('formatDate', (date) => {
-  return moment(date).format('DD-MM-YYYY');
+  moment.locale('es');
+  return moment(date).fromNow();
+  //return moment(date).format('DD-MM-YYYY');
 });
 
 Template.registerHelper('whoIs', (id) => {
@@ -14,4 +16,8 @@ Template.registerHelper('isOwner', (id) => {
 
 Template.registerHelper('whoAmI', (id) => {
   return Meteor.users.findOne({_id: Meteor.userId()}).emails[0].address;
+});
+
+Template.registerHelper('log', (arg) => {
+  console.log(arg);
 });

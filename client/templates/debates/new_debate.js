@@ -11,9 +11,8 @@ Template.newDebate.events({
 		debate = _.processForm(e, DebateSchema, DebateAutoValues);
 		var  schemaContext = DebateSchema.namedContext("insertForm");
 		Debates.insert(debate, {validationContext: "insertForm"}, function(error, result) {
-			console.log(error)	
+			console.log(error)
 		});
 		Router.go('debatesList');
 	}
 })
-

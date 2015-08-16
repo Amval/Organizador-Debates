@@ -52,7 +52,12 @@ Template.debatePage.events({
         });
 
         debateId = Session.get('currentDebate');
-        Debates.update({_id: debateId}, {$inc: {ideasCount: 1}});
+        Debates.update({_id: debateId}, {
+          $set: {activity: Date.now()},
+          $inc: {ideasCount: 1},
+          $push: {activeUsers: {$each: [Meteor.userId()], $sort: 1, $slice: -4}}
+        });
+
 
         $('.form')[0].reset();
         Template.instance().newIdea.set(false);

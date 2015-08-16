@@ -19,13 +19,11 @@
 meteor-platform
 aldeed:collection2
 iron:router
-sacha:spin
 accounts-password
 semantic:ui-css
 useraccounts:semantic-ui
 accounts-ui-unstyled
 
-momentjs:moment
 voodoohop:masonrify
 citizenkevin:medium-editor
 reactive-var
@@ -33,4 +31,5 @@ stevezhu:lodash
 markdown
 grigio:babel
 fourseven:scss
-mpowaga:template-styles
+rzymek:moment
+rzymek:moment-locale-es
