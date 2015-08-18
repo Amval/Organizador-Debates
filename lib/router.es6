@@ -5,24 +5,9 @@ Router.configure({
 });
 
 
-// Funciones auxiliares
-
-// Requiere estar registrado
-var requireLogin = function() {
-	if (!Meteor.user()) {
-		if (Meteor.loggingIn()) {
-			this.render(this.loadingTemplate);
-		} else {
-			this.render('accessDenied');
-		}
-	} else {
-		this.next();
-	}
-};
-
-
 Router.onBeforeAction('dataNotFound', {only: 'debatePage'});
-Router.onBeforeAction(requireLogin, {only: 'newDebate'});
+Router.onBeforeAction(HOOKS.requireLogin, {only: 'newDebate'});
+Router.onBeforeAction(HOOKS.requireMembership, {only: 'debatePage'});
 
 
 Router.map( function() {
@@ -35,19 +20,9 @@ Router.map( function() {
 	this.route('/', {
 		name: 'debatesList',
 		waitOn: function() {
-			return [Meteor.subscribe('debates'), Meteor.subscribe('userData')];
+			return [Meteor.subscribe('debates', Meteor.userId()), Meteor.subscribe('userData')];
 		},
-		onBeforeAction: function() {
-			if (!Meteor.user()) {
-				if (Meteor.loggingIn()) {
-					this.render(this.loadingTemplate);
-				} else {
-					this.render('welcomeNewUser');
-				}
-			} else {
-				this.next();
-			}
-		}
+		onBeforeAction: HOOKS.requireLoginWelcome
 	});
 
 	// Nuevo debate

@@ -1,0 +1,33 @@
+<template name="requestAccess">
+  <div class="ui centered stackable grid">
+		<div class="fourteen wide column">
+      {{#if isMember}}
+          <div class="ui green button">
+            <i class="user icon"></i>
+            Eres miembro
+          </div>
+      {{else}}
+          {{#if hasRequested}}
+              <div class="ui red button cancel">
+                <i class="mail icon"></i>
+                Solicitud realizada
+              </div>
+          {{else}}
+              <div class="ui button join">
+                <i class="add user icon"></i>
+                Participar
+              </div>
+          {{/if}}
+      {{/if}}
+			<div class="ui segment">
+        <h2 class="ui header">{{title}}</h2>
+        <div class="sub header">
+            <i class="calendar outline icon pull right"></i> Creado el {{formatDate createdAt}} por
+            <i class="user icon"></i> {{whoIs owner}}
+        </div>
+        <h4 class="ui horizontal header divider"><i class="newspaper icon"></i></h4>
+        <p>{{#markdown}}{{description}}{{/markdown}}</p>
+			</div>
+		</div>
+	</div>
+</template>
