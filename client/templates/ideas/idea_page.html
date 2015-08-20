@@ -11,18 +11,20 @@
                 <p>{{#markdown}}{{description}}{{/markdown}}</p>
                 <h4 class="ui horizontal header divider"><i class="comments icon"></i></h4>
 
-                <a class="ui green button" id="new-comment"><i class="comment icon"></i> Añadir Comentario</a>
+                <div id="new-comment" class="ui primary submit labeled icon button">
+                  <i class="icon edit"></i> Añadir Comentario
+                </div>
                 {{#if newComment}}
                   {{> yield "newComment"}}
                 {{/if}}
-                <div class="ui comments">
-                    {{#each comments}}
-                      {{> yield "commentItem"}}
-                    {{/each}}
-                </div>
-
 
             </div>
+            <div class="ui comments">
+              {{#each comments}}
+                {{> yield "commentItem"}}
+              {{/each}}
+            </div>
+
         </div>
     </div>
 </template>

@@ -1,14 +1,20 @@
 <template name="newDebate">
-	<form class="ui form">
-		<h4 class="ui dividing header">
-			Nuevo Debate
-		</h4>
-		<div class="field">
-			<input name="title" id="title" type="text" value="" placeholder="Titulo">
+	<div class="ui centered stackable grid">
+		<div class="fourteen wide column">
+			<div class="ui segment">
+				<form class="ui form">
+					<h4 class="ui dividing header">
+						Nuevo Debate
+					</h4>
+					<div class="field">
+						<input name="title" id="title" type="text" value="" placeholder="Titulo">
+					</div>
+					<div class="field">
+						<textarea name="description" id="description" type="text" value="" placeholder="Descripcion"></textarea>
+					</div>
+					<input type="submit" value="Enviar" class="ui submit button">
+				</form>
+			</div>
 		</div>
-		<div class="field">
-			<textarea name="description" id="description" type="text" value="" placeholder="Descripcion"></textarea>
-		</div>
-		<input type="submit" value="Enviar" class="ui submit button">
-	</form>
+	</div>
 </template>

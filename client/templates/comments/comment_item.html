@@ -1,16 +1,18 @@
 <template name="commentItem">
-    <div class="ui segment">
-        <div class="comment">
-            <div class="content">
-                <a class="author">{{whoIs owner}}</a>
-                <div class="metadata">
-                    {{formatDate createdAt}}
-                </div>
-                <div class="text">
-                    {{content}}
-                </div>
-            </div>        
-        </div>        
+    <div class="comment">
+    <a class="avatar">
+      {{>avatar _id=owner}}
+    </a>
+    <div class="content">
+      <a class="author">{{whoIs owner}}</a>
+      <div class="metadata">
+        <div class="date">
+            {{formatDate createdAt}}
+        </div>
+      </div>
+        {{content}}
+
     </div>
+  </div>
 
 </template>

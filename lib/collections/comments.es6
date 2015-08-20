@@ -1,11 +1,13 @@
+/**
+ * Coleccion de Comentarios
+ */
 Comments = new Mongo.Collection('comments');
 
+/**
+ * Esquema de Comentarios.
+ * Para poder insertarse un nuevo elemento a esta coleccion, ha de cumplit el esquema.
+ */
 CommentSchema = new SimpleSchema({
-  title: {
-    label: "Título",
-    type: String,
-    optional: true
-  },
   content: {
     label: "Comentario",
     type: String
@@ -21,17 +23,23 @@ CommentSchema = new SimpleSchema({
   }
 });
 
+/**
+ * Anyade el esquema a la coleccion.
+ */
 Comments.attachSchema(CommentSchema);
 
+/**
+ * Funciones para la insercion automatica de valores
+ */
 CommentAutovalues = {
   owner: function() {
-    return Meteor.userId();  
-  }, 
+    return Meteor.userId();
+  },
   createdAt: function() {
-    return Date.now();  
+    return Date.now();
   },
   idea: function() {
-    return Session.get('currentIdea');  
-  }, 
+    return Session.get('currentIdea');
+  },
 
 }
