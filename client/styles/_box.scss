@@ -1,0 +1,52 @@
+.ui {
+  .segment {
+    &.box {
+        .big {
+          &.avatar {
+            @include default-avatar($size:40px);
+            font: 25px/23px Helvetica,Arial,sans-serif;
+            padding: 10px 3px 0 3px;
+            display: inline-block;
+          }
+        }
+        .title {
+          font: 2em Helvetica,Arial,sans-serif;
+          width: 80%;
+          display: block;
+          color: #222;
+          position: relative;
+          left: 65px;
+          top: -40px;
+        }
+
+        .metadata{
+          .username{
+            font: 14px Helvetica,Arial,sans-serif;
+            color: #646464;
+            font-weight: bold;
+            position: relative;
+            left: 65px;
+            top: -25px;
+            width: auto;
+            display: inline-block;
+          }
+          .created-at {
+            position: relative;
+            left: 70px;
+            top: -25px;
+            width: auto;
+            display: inline-block;
+          }
+        }
+
+        .content {
+          padding: 0 5px 10px 5px;
+          margin: 0 10px 0 25px;
+          & img {
+            max-width: 80%;
+          }
+        }
+
+      }
+    }
+  }

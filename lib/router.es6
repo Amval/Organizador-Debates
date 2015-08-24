@@ -26,7 +26,9 @@ Router.map( function() {
 	});
 
 	// Nuevo debate
-	this.route('/new_debate', { name: 'newDebate'});
+	this.route('/new_debate', {
+		name: 'newDebate',
+	});
 
 
 	// Ver tlas ideas contenidas en un debate

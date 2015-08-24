@@ -1,6 +1,7 @@
 <template name="ideaItem">
     <div class="ui card">
         <div class="content">
+          {{>avatar _id=owner}}
             <div class="header">
                <a href="{{pathFor 'ideaPage'}}">{{title}}</a>
             </div>

@@ -1,25 +1,25 @@
 <template name="debatesList">
-  <div class="ui centered grid container">
-    <div class="fourteen wide column">
+  <div class="ui centered stackable grid">
+    <div class="ten wide column">
       <a class="ui blue button" href="{{pathFor 'newDebate'}}">Nuevo Debate</a>
       <br>
       <div class="ui stacked segments">
-        <div class="ui segment">
+        <div class="ui inverted segment">
           <div class="ui grid">
-            <div class="eight wide column">
+            <div class="eight wide center aligned column">
             <i class="newspaper icon"></i> Mis Debates
             </div>
-            <div class="two wide column">
-              <i class="fire icon"></i> Actividad
+            <div class="two wide center aligned column">
+              <i class="fire icon"></i>
             </div>
-            <div class="two wide column">
-              <i class="idea icon"></i> Ideas
+            <div class="one wide center aligned column">
+              <i class="idea icon"></i>
             </div>
-            <div class="two wide column">
-              <i class="comments outline icon"></i> Comentarios
+            <div class="one wide center aligned column">
+              <i class="comments outline icon"></i>
             </div>
-            <div class="two wide column">
-              <i class="users icon"></i> Usuarios
+            <div class="three wide center aligned column">
+              <i class="users icon"></i>
             </div>
           </div>
         </div>
@@ -29,8 +29,9 @@
           {{> debateItem}}
         {{/each}}
       </div>
+
     </div>
-    </div>
+  </div>
 
 
 </template>

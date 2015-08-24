@@ -25,7 +25,6 @@ useraccounts:semantic-ui
 accounts-ui-unstyled
 
 voodoohop:masonrify
-citizenkevin:medium-editor
 reactive-var
 stevezhu:lodash
 markdown
@@ -33,3 +32,4 @@ grigio:babel
 fourseven:scss
 rzymek:moment
 rzymek:moment-locale-es
+mediumeditor:mediumeditor

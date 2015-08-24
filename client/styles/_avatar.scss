@@ -1,5 +1,4 @@
-  $size : 25px;
-.avatar{
+@mixin default-avatar($size) {
   position:relative;
   overflow:hidden;
   width:$size;
@@ -11,21 +10,39 @@
   line-height:$size;
   text-align: center;
   color: white;
-  font: 15px/13px Helvetica,Arial,sans-serif;
-  padding: 7px 3px 0 3px;
+  //font: 15px/13px Helvetica,Arial,sans-serif;
+  //padding: 7px 3px 0 3px;
   box-sizing: border-box;
 
-
+  & img{
+    position:relative;
+    -webkit-border-radius:50%;
+    border-radius:50%;
+    z-index:10
+  }
 }
-.text{
-  position: relative;
-  left: 32px;
-  top: -20px;
-}
 
-.avatar img{
-  position:relative;
-  -webkit-border-radius:50%;
-  border-radius:50%;
-  z-index:10
+.al {
+  &.big {
+    &.avatar {
+      @include default-avatar($size:40px);
+      font: 25px/23px Helvetica,Arial,sans-serif;
+      padding: 10px 3px 0 3px;
+      display: inline-block;
+    }
+  }
+
+  &.small{
+    &.avatar{
+      @include default-avatar($size:25px);
+      font: 15px/13px Helvetica,Arial,sans-serif;
+      padding: 7px 3px 0 3px
+    }
+  ;
+  }
+  .text{
+    position: relative;
+    left: 32px;
+    top: -20px;
+  }
 }

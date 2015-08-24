@@ -3,6 +3,7 @@ Template.debatePage.created = function() {
     this.newIdea.set(false);
 };
 
+
 Template.debatePage.helpers({
 	debateOwner: function(id) {
 		return Meteor.users.findOne({_id:id}).emails[0].address;
