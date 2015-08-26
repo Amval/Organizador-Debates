@@ -48,6 +48,7 @@ Template.debatePage.events({
         e.preventDefault();
 
         var idea = _.processForm(e, IdeaSchema, IdeaAutovalues);
+        console.log(idea);
         Ideas.insert(idea, {validationContext: "insertForm"}, function(error, result) {
             console.log(error)
         });

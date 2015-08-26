@@ -21,3 +21,8 @@ Template.registerHelper('whoAmI', (id) => {
 Template.registerHelper('log', (arg) => {
   console.log(arg);
 });
+
+Template.registerHelper('howMany', (elements, string) => {
+  //return (elements!==1) ? `${elements} ${string}s` : `${elements} ${string}`
+  return `${elements} ${string}${(elements!==1 ? 's':'')}`;
+});

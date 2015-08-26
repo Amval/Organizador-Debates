@@ -14,6 +14,10 @@ IdeaSchema = new SimpleSchema({
         type: String,
         optional: true
     },
+    tags: {
+      type: [String],
+      optional: true,
+    },
     createdAt: {
         type: Date,
         optional: true
@@ -25,7 +29,6 @@ IdeaSchema = new SimpleSchema({
         type: Number,
         min: 0,
         optional: true,
-
     }
 });
 
@@ -43,5 +46,9 @@ IdeaAutovalues = {
     },
     commentsCount: function() {
       return 0;
+    },
+    tags: function() {
+      tags = $('input[name=tags]').val();
+      return tags.split(',');
     },
 }

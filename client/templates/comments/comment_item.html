@@ -1,18 +1,17 @@
 <template name="commentItem">
-    <div class="comment">
-    <a class="avatar">
-      {{>avatar _id=owner}}
-    </a>
-    <div class="content">
-      <a class="author">{{whoIs owner}}</a>
+    <div class="ui segment box">
+      {{>bigAvatar _id=owner}}
       <div class="metadata">
-        <div class="date">
-            {{formatDate createdAt}}
+        <div class="username">
+          {{whoIs owner}}
+        </div>
+        <div class="right floated created-at">
+          <i class="time icon"></i>
+          {{formatDate createdAt}}
         </div>
       </div>
-        {{content}}
-
+      <div class="content">
+        {{#markdown}}{{content}}{{/markdown}}
+      </div>
     </div>
-  </div>
-
 </template>

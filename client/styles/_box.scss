@@ -1,5 +1,5 @@
 .ui {
-  .segment {
+  &.segment {
     &.box {
         .big {
           &.avatar {
@@ -49,4 +49,67 @@
 
       }
     }
+
+    &.card {
+      &.box {
+
+        .avatar {
+          position:relative;
+          overflow:hidden;
+          margin:left;
+          -webkit-border-radius:50%;
+          border-radius:50%;
+        }
+        .title {
+          font: 1.2em Helvetica,Arial,sans-serif;
+          font-weight: bold;
+          width: 80%;
+          display: block;
+          color: #222;
+          position: relative;
+          left: 45px;
+          top: -32px;
+        }
+
+        .metadata{
+          font: 0.95em Helvetica,Arial,sans-serif;
+          .username{
+            color: #646464;
+            font-weight: bold;
+            position: relative;
+            left: 25px;
+            top: -20px;
+
+            width: auto;
+            display: inline-block;
+            margin-right: 30px;
+          }
+          .created-at {
+            position: relative;
+            width: auto;
+            display: inline-block;
+            top: -20px;
+            
+          }
+        }
+
+        .content {
+          padding: 0 5px 10px 5px;
+          margin: 15px 10px 0 25px;
+          & img {
+            max-width: 80%;
+          }
+        }
+      }
+    }
+
+    .profile {
+      margin: 10px;
+      display: inline-block;
+    }
   }
+
+
+.idea {
+  margin: 10px;
+}

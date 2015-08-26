@@ -1,20 +1,46 @@
 <template name="ideaItem">
-    <div class="ui card">
-        <div class="content">
-          {{>avatar _id=owner}}
-            <div class="header">
-               <a href="{{pathFor 'ideaPage'}}">{{title}}</a>
-            </div>
-            <div class="meta">
-            <span>
-                <i class="user icon"></i>
-                {{whoIs owner}}
-            </span>
-            </div>
-            <br>
-            <div class="description">
-              {{#markdown}}{{description}}{{/markdown}}
-            </div>
+    <div class="ui card box">
+      <div class="profile">
+        {{>avatar _id=owner}}
+      </div>
+      <div class="title">
+          <a href="{{pathFor 'ideaPage'}}">{{title}}</a>
+      </div>
+      <div class="metadata">
+        <div class="username">
+          <i class="user icon"></i>
+          {{whoIs owner}}
         </div>
+        <div class="created-at">
+          <i class="time icon"></i>
+          {{formatDate createdAt}}
+        </div>
+      </div>
+      <div class="content">
+        <div class="ui labels">
+        {{#each tags}}
+          <div class="ui label">
+            <i class="idea icon"></i>
+            {{this}}
+          </div>
+        {{/each}}
+        </div>
+      </div>
+
+        <div class="extra content">
+          <a href="{{pathFor 'ideaPage'}}">
+            <i class="comments icon"></i>
+            {{howMany commentsCount 'comentario'}}
+          </a>
+          <div class="ui two buttons">
+            <div class="ui basic green button">
+              <i class="arrow up icon"></i>
+            </div>
+            <div class="ui basic red button">
+              <i class="arrow down icon"></i>
+            </div>
+          </div>
+        </div>
+
     </div>
 </template>

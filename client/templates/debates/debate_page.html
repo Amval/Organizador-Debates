@@ -28,14 +28,23 @@
 					{{#markdown}}{{description}}{{/markdown}}
 				</div>
 			</div>
+			<a class="ui primary submit labeled icon button" id="new-idea"><i class="idea icon"></i> Añadir Idea</a>
+			{{#if newIdea}}
+				{{>yield "newIdea"}}
+			{{/if}}
 
-      	{{#each ideas}}
-      	  {{> ideaItem}}
-      	{{/each}}
-      	<a class="ui primary submit labeled icon button" id="new-idea"><i class="idea icon"></i> Añadir Idea</a>
-      	{{#if newIdea}}
-      	  {{>yield "newIdea"}}
-      	{{/if}}
 		</div>
+		<div class="fifteen wide column">
+			{{#masonryContainer id="ideas-container" itemSelector=".ideas"}}
+				{{#each ideas}}
+								{{#masonryElement "ideas-container"}}
+										<div class="idea">
+										{{> ideaItem}}
+										</div>
+								{{/masonryElement}}
+				{{/each}}
+			{{/masonryContainer}}
+		</div>
+
 	</div>
 </template>
