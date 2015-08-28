@@ -29,6 +29,14 @@ IdeaSchema = new SimpleSchema({
         type: Number,
         min: 0,
         optional: true,
+    },
+    votes: {
+      type: Number,
+      optional: true
+    },
+    voters: {
+      type: [String],
+      optional: true
     }
 });
 
@@ -51,4 +59,10 @@ IdeaAutovalues = {
       tags = $('input[name=tags]').val();
       return tags.split(',');
     },
+    votes: () => {
+      return 1;
+    },
+    voters: () => {
+      return [Meteor.userId()];
+    }
 }

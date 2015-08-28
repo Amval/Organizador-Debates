@@ -28,18 +28,24 @@
       </div>
 
         <div class="extra content">
-          <a href="{{pathFor 'ideaPage'}}">
-            <i class="comments icon"></i>
-            {{howMany commentsCount 'comentario'}}
-          </a>
           <div class="ui two buttons">
-            <div class="ui basic green button">
-              <i class="arrow up icon"></i>
+            <a href="{{pathFor 'ideaPage'}}" class="ui blue basic button">
+                <i class="blue comments icon"></i>
+              {{howMany commentsCount ''}}
+            </a>
+            {{#if hasVoted _id voters}}
+            <div class="ui basic red button upvote" data-id="{{_id}}">
+              <i class="red heart icon"></i>
+              {{howMany votes 'voto'}}
             </div>
-            <div class="ui basic red button">
-              <i class="arrow down icon"></i>
+            {{else}}
+            <div class="ui basic red button upvote" data-id="{{_id}}">
+              <i class="heart icon"></i>
+              {{howMany votes 'voto'}}
             </div>
+            {{/if}}
           </div>
+
         </div>
 
     </div>

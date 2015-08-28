@@ -24,12 +24,12 @@ semantic:ui-css
 useraccounts:semantic-ui
 accounts-ui-unstyled
 
-voodoohop:masonrify
 reactive-var
 stevezhu:lodash
 markdown
 grigio:babel
 fourseven:scss
 rzymek:moment
-rzymek:moment-locale-es
 mediumeditor:mediumeditor
+sjors:meteor-masonry
+voodoohop:masonrify

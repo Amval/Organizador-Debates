@@ -1,5 +1,5 @@
 Template.registerHelper('formatDate', (date) => {
-  moment.locale('es');
+  moment.locale('es_custom');
   return moment(date).fromNow();
   //return moment(date).format('DD-MM-YYYY');
 });
@@ -24,5 +24,10 @@ Template.registerHelper('log', (arg) => {
 
 Template.registerHelper('howMany', (elements, string) => {
   //return (elements!==1) ? `${elements} ${string}s` : `${elements} ${string}`
-  return `${elements} ${string}${(elements!==1 ? 's':'')}`;
+  if (string!=='') {
+    return `${elements} ${string}${(elements!==1 ? 's':'')}`;
+  }
+  else {
+    return elements;
+  }
 });

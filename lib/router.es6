@@ -38,7 +38,11 @@ Router.map( function() {
 			return Meteor.subscribe('ideas', this.params._id);
 		},
 		waitOn: function() {
-			return [Meteor.subscribe('debate', this.params._id),Meteor.subscribe('userData')];
+			return [
+				Meteor.subscribe('debate', this.params._id),
+				Meteor.subscribe('userData'),
+				Meteor.subscribe('ideas', this.params._id)
+			];
 		},
 		data: function() {
 			Session.set('currentDebate',this.params._id);
