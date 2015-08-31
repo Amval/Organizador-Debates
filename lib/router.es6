@@ -28,6 +28,9 @@ Router.map( function() {
 	// Nuevo debate
 	this.route('/new_debate', {
 		name: 'newDebate',
+		waitOn: function() {
+			return Meteor.subscribe('userData');
+		},
 	});
 
 
@@ -61,7 +64,10 @@ Router.map( function() {
 		  return Meteor.subscribe('comments',this.params._id);
 		},
 		waitOn: function() {
-		  return Meteor.subscribe('idea',this.params._id);
+		  return [
+				Meteor.subscribe('idea',this.params._id),
+				Meteor.subscribe('userData')
+			];
 		},
 		data: function() {
 		  Session.set('currentIdea',this.params._id);

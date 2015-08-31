@@ -8,17 +8,17 @@ Template.debatePage.helpers({
 	debateOwner: function(id) {
 		return Meteor.users.findOne({_id:id}).emails[0].address;
 	},
-    accessRequest: function() {
-        if (this.membershipRequest && this.membershipRequest.length > 0) {
-            return true;
-        }
-    },
-    newIdea: function() {
-      return Template.instance().newIdea.get()
-    },
-    ideas: function() {
-      return Ideas.find();
-    },
+  accessRequest: function() {
+    if (this.membershipRequest && this.membershipRequest.length > 0) {
+        return true;
+    }
+  },
+  newIdea: function() {
+    return Template.instance().newIdea.get()
+  },
+  ideas: function() {
+    return Ideas.find();
+  },
   minimumIdeas: function() {
     min = 2;
     ideasCount = Ideas.find({debate: Session.get('currentDebate')}).count();
@@ -30,11 +30,10 @@ Template.debatePage.helpers({
 
 Template.debatePage.events({
     'click .grant-access': function(e) {
-        memberId = e.currentTarget.id;
-        debateId = Session.get('currentDebate');
-        Debates.update({_id: debateId}, {$addToSet: {members: memberId}});
-        Debates.update({_id: debateId}, {$pull: {membershipRequest: memberId}});
-
+      memberId = e.currentTarget.id;
+      debateId = Session.get('currentDebate');
+      Debates.update({_id: debateId}, {$addToSet: {members: memberId}});
+      Debates.update({_id: debateId}, {$pull: {membershipRequest: memberId}});
     },
     // Cambia valor entre 'true' y 'false' de 'newIdea'.
     // Su valor rige la inserción dinámica de un formulario para
@@ -52,8 +51,9 @@ Template.debatePage.events({
         Ideas.insert(idea, {validationContext: "insertForm"}, function(error, result) {
             console.log(error)
         });
-
+        // Actividad
         debateId = Session.get('currentDebate');
+        debate =  Debates.find
         Debates.update({_id: debateId}, {
           $set: {activity: Date.now()},
           $inc: {ideasCount: 1},
@@ -86,5 +86,5 @@ Template.debatePage.events({
         }
       }
     },
-    
+
 });

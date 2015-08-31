@@ -1,5 +1,4 @@
 Template.registerHelper('formatDate', (date) => {
-  moment.locale('es_custom');
   return moment(date).fromNow();
   //return moment(date).format('DD-MM-YYYY');
 });
