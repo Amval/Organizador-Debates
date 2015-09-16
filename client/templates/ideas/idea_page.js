@@ -16,7 +16,7 @@ Template.ideaPage.helpers({
 Template.ideaPage.events({
     'click #new-comment': function(e) {
         e.preventDefault();
-        _.switch(Template.instance().newComment);
+        _.switch("newComment");
     },
 
     'submit form': function(e) {

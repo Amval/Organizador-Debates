@@ -1,13 +1,16 @@
 <template name="avatar">
-    <div class="al small avatar" style="{{getColor _id}}">
+  <div class="popup">
+    <div class="al small avatar" style="{{getColor _id}}" data-variation="inverted" data-title="{{whoIs _id}}" data-content="Registrado {{registerDate _id }}">
       {{getLetter _id}}
     </div>
-
+  </div>
 </template>
 
 <template name="bigAvatar">
-    <div class="big avatar" style="{{getColor _id}}">
+  <div class="popup">
+    <div class="big avatar" style="{{getColor _id}}" data-variation="inverted" data-title="{{whoIs _id}}" data-content="Registrado {{registerDate _id }}">
       {{getLetter _id}}
     </div>
+  </div>
 
 </template>

@@ -1,6 +1,18 @@
 Debates = new Mongo.Collection("debates");
 
-
+/**
+ * DEBATE
+ * Esquema que han de cumplir los nuevos documentos.
+ * - titulo
+ * - descripcion
+ * - Dueño del debate
+ * - Fecha de creacion
+ * - Array con userId de posibles participantes.
+ * - Numero de comentarios
+ * - Numero de votos
+ * - Actividad (fecha de ultima idea/comentario introducida)
+ * - userId de ultimos participantes (añadieron nueva idea/comentario)
+ */
 DebateSchema = new SimpleSchema({
 	title: {
 		type: String,
@@ -48,25 +60,25 @@ DebateSchema = new SimpleSchema({
 Debates.attachSchema(DebateSchema);
 
 DebateAutoValues = {
-	owner: function () {
+	owner: () => {
 		return Meteor.userId();
 	},
-	createdAt: function() {
+	createdAt: () => {
 		return Date.now();
 	},
-	members: function() {
+	members: () => {
 		return [Meteor.userId()];
 	},
-	ideasCount: function() {
+	ideasCount: () => {
 		return 0;
 	},
-	commentsCount: function() {
+	commentsCount: () => {
 		return 0;
 	},
-	activity: function() {
+	activity: () => {
 		return Date.now();
 	},
-	activeUsers: function() {
+	activeUsers: () => {
 		return [Meteor.userId()];
 	},
 }

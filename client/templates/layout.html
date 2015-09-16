@@ -1,7 +1,8 @@
 <template name="layout">
 	<body>
-		<div class="ui pointing menu">
+		<div class="ui secondary pointing menu">
 			<a class="active item" href="{{pathFor 'debatesList'}}">Organizador de Debates</a>
+			<a href="ideaCheckboxItem"></a>
 			<div class="right menu">
 				{{#if currentUser}}
 				<a class="item" href="">
@@ -12,7 +13,7 @@
 			</div>
 		</div>
 		<div class="ui centered grid">
-			<div class="fifteen wide column">
+			<div class="sixteen wide column">
 					{{> yield}}
 			</div>
 		</div>

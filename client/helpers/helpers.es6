@@ -23,6 +23,9 @@ Template.registerHelper('log', (arg) => {
 
 Template.registerHelper('howMany', (elements, string) => {
   //return (elements!==1) ? `${elements} ${string}s` : `${elements} ${string}`
+  if (_.isArray(elements)) {
+    elements = elements.length;
+  };
   if (string!=='') {
     return `${elements} ${string}${(elements!==1 ? 's':'')}`;
   }
@@ -30,3 +33,9 @@ Template.registerHelper('howMany', (elements, string) => {
     return elements;
   }
 });
+
+
+Template.registerHelper('thereIsNone', (collection)=> {
+  console.log(collection.count());
+  return (collection.count() === 0);
+})

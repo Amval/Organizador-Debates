@@ -28,6 +28,9 @@
         {{#each debates}}
           {{> debateItem}}
         {{/each}}
+        {{#if thereIsNone debates}}
+          {{> noDebates}}
+        {{/if}}
       </div>
 
     </div>

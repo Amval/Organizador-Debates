@@ -1,18 +1,26 @@
 <template name="agregateIdeas">
-  <div class="ui segment">
-    <h2 class="ui header">Agregación de Ideas</h2>
-    <div class="sub header">
+  <div class="ui centered stackable grid">
+    <div class="ten wide column">
+      <div class="ui icon labeled button primary" id="newAgregatedIdea">
+        <i class="sitemap icon"></i>
+        Nueva Idea Agregada
+      </div>
+      {{#if newAgregatedIdea}}
+				{{>yield "newAgregatedIdea"}}
+			{{/if}}
     </div>
-    <h4 class="ui horizontal header divider"><i class="newspaper icon"></i></h4>
-    <div class="celled list">
+    <div class="sixteen wide column">
       {{#masonryContainer id="ideaList-container" itemSelector=".idea"}}
         {{#each ideas}}
-          {{#masonryElement "ideaList-container"}}
-              <div class="idea">
-              {{> ideaListItem}}
-              </div>
-          {{/masonryElement}}
+          {{#unless isAgregated}}
+            {{#masonryElement "ideaList-container"}}
+                <div class="idea">
+                {{> ideaCheckboxItem}}
+                </div>
+            {{/masonryElement}}
+          {{/unless}}
         {{/each}}
+
       {{/masonryContainer}}
     </div>
   </div>

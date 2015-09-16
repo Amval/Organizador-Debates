@@ -19,9 +19,10 @@ _.filterSelection = function(array,selection) {
  * Usado como "switch" de variables para mostrar/ocultar bloques de interfaz.
  * @param {ReactiveVar} reactiveVar - variable a cambiar.
  */
-
 _.switch = (reactiveVar) => {
-  reactiveVar.set(!reactiveVar.get())
+  //reactiveVar.set(!reactiveVar.get());
+  const tmp = Template.instance();
+  tmp[reactiveVar].set(!tmp[reactiveVar].get())
 };
 
 /**
@@ -36,7 +37,8 @@ _.processForm = (e, schemaName, autovalues) => {
     // Claves a comparar
     const keys = schemaName._schemaKeys;
     const schema = schemaName._schema;
-    const autoKeys = _.keys(autovalues);
+    // Claves propias y heredadas
+    const autoKeys = _.keysIn(autovalues);
     // Resultado a devolver
     let result = {};
     // Claves que el formulario debe cumplir para respetar el esquema.
@@ -52,4 +54,12 @@ _.processForm = (e, schemaName, autovalues) => {
         result[item] = autovalues[item]();
     });
     return result;
-}
+};
+
+/**
+ * Limpiar formulario
+ */
+ _.cleanForm = (reactiveVar) => {
+   $('.form')[0].reset();
+   _.switch(reactiveVar);
+ }

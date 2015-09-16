@@ -1,0 +1,42 @@
+<template name="newAgregatedIdea">
+  <div class="ui segment">
+    <form class="ui form">
+        <h4 class="ui dividing header">
+            Crear Idea agregada
+        </h4>
+        <p>
+          Selecciona al menos dos ideas relacionadas. Escribe un título y pequeña descripción que las resuma.
+        </p>
+        <div class="field">
+            <input name="title" id="title" type="text" value="" placeholder="Titulo">
+        </div>
+        <div class="field">
+          <textarea name="description" id="description" type="text" value="" placeholder="Descripcion" rows="3"></textarea>
+        </div>
+        Sugerencia de etiquetas:
+        {{#each tagsSuggestions}}
+          {{activatePopup tag}}
+          <div class="popup">
+            <div class="ui label {{tag}}"  data-variation="inverted" data-title="Aparición en {{howMany times 'etiqueta'}} " data-content="Porcentaje del total: {{percentage}}%">
+              <i class="idea icon"></i>{{tag}}
+            </div>
+          </div>
+
+        {{/each}}
+        <div class="field">
+          <div class="ui right labeled left icon input">
+            <i class="tags icon"></i>
+            <input name="tags" id="tags" type="text" value="" placeholder="Escribe palabras separadas por comas relacionadas con la idea">
+            <a class="ui tag label">
+              Etiquetas
+            </a>
+          </div>
+        </div>
+        <input type="submit" value="Enviar" class="ui submit button">
+        <div class="ui floated right circular {{minimumIdeas}} button">
+          <i class="idea icon"></i>
+          {{selectedIdeas}}
+        </div>
+    </form>
+  </div>
+</template>

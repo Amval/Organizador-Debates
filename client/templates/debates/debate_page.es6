@@ -40,7 +40,7 @@ Template.debatePage.events({
     // anyadir nuevas ideas.
     'click #new-idea': function(e) {
       //Template.instance().newIdea.set(!Template.instance().newIdea.get());
-      _.switch(Template.instance().newIdea);
+      _.switch("newIdea");
     },
 
     'submit form': function(e) {
@@ -65,26 +65,5 @@ Template.debatePage.events({
         Template.instance().newIdea.set(false);
     },
 
-    'click .upvote': (e) => {
-      userId = Meteor.userId();
-      ideaId = $(e.target).data('id');
-      //
-      idea = Ideas.findOne({_id: ideaId});
-      console.log(idea);
-      if (userId !== idea.owner) {
-        if (_.includes(idea.voters, userId) ) {
-          Ideas.update({_id: ideaId}, {
-            $inc: {votes:-1},
-            $pull: {voters: Meteor.userId()}
-          });
-        }
-        else {
-          Ideas.update({_id: ideaId}, {
-            $inc: {votes:1},
-            $push: {voters: Meteor.userId()}
-          });
-        }
-      }
-    },
 
 });

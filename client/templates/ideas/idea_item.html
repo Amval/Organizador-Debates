@@ -26,27 +26,28 @@
         {{/each}}
         </div>
       </div>
-
-        <div class="extra content">
-          <div class="ui two buttons">
-            <a href="{{pathFor 'ideaPage'}}" class="ui blue basic button">
-                <i class="blue comments icon"></i>
-              {{howMany commentsCount ''}}
-            </a>
-            {{#if hasVoted _id voters}}
-            <div class="ui basic red button upvote" data-id="{{_id}}">
-              <i class="red heart icon"></i>
-              {{howMany votes 'voto'}}
-            </div>
-            {{else}}
-            <div class="ui basic red button upvote" data-id="{{_id}}">
-              <i class="heart icon"></i>
-              {{howMany votes 'voto'}}
-            </div>
-            {{/if}}
-          </div>
-
-        </div>
-
+      {{> commentsAndVotes}}
     </div>
+</template>
+
+<template name="commentsAndVotes">
+  <div class="extra content">
+    <div class="ui two buttons">
+      <a href="{{pathFor 'ideaPage'}}" class="ui blue basic button">
+          <i class="blue comments icon"></i>
+        {{howMany commentsCount ''}}
+      </a>
+      {{#if hasVoted _id voters}}
+      <div class="ui basic red button upvote" data-id="{{_id}}">
+        <i class="heart red icon"></i>
+        {{howMany votes 'voto'}}
+      </div>
+      {{else}}
+      <div class="ui grey basic button upvote" data-id="{{_id}}">
+        <i class="heart disabled icon"></i>
+        {{howMany votes 'voto'}}
+      </div>
+      {{/if}}
+    </div>
+  </div>
 </template>

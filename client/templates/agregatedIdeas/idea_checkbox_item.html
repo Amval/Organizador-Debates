@@ -1,0 +1,32 @@
+<template name="ideaCheckboxItem">
+  <div class="ui card box">
+    <div class="profile">
+      {{>avatar _id=owner}}
+    </div>
+    <div class="title">
+      {{#if containsIdeas}}
+        <div class="popup">
+          <i class="sitemap icon" data-variation="inverted" data-title="Idea agregada" data-content="Contiene {{howMany ideas "idea" }}"></i>
+        </div>
+      {{/if}}
+        <a href="{{pathFor 'ideaPage'}}">{{title}}</a>
+    </div>
+    <div class="metadata">
+      <div class="username">
+        <i class="user icon"></i>
+        {{whoIs owner}}
+      </div>
+      <div class="created-at">
+        <i class="time icon"></i>
+        {{formatDate createdAt}}
+      </div>
+
+    </div>
+    {{> commentsAndVotes}}
+    <div id="{{_id}}" class="ui labeled icon button selection">
+      <i class="square icon selection"></i>
+      <span class="selection">Seleccionar</span>
+    </div>
+  </div>
+
+</template>

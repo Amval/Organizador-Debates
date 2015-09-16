@@ -54,7 +54,7 @@ Router.map( function() {
 		yieldRegions: {
 			'newIdea': {to: 'newIdea'},
 			'accessRequest': {to: 'accessRequest'},
-			'controlPanel': {to: 'controlPanel'}
+			'controlPanel': {to: 'controlPanel'},
 		}
 	});
 
@@ -81,10 +81,21 @@ Router.map( function() {
 
 	this.route('/agregate_ideas/:_id', {
 		name: 'agregateIdeas',
-		subscriptions: function() {
-			return Meteor.subscribe('ideas', this.params._id);
+		waitOn: function() {
+			Session.set('selection',[]);
+			Session.set('currentDebate',this.params._id);
+			return [
+				Meteor.subscribe('ideas', this.params._id),
+				Meteor.subscribe('userData'),
+				Meteor.subscribe('agregatedIdeas', this.params._id)
+			];
 		},
-
+		data: function() {
+			return AgregatedIdeas.find();
+		},
+		yieldRegions: {
+			'newAgregatedIdea': {to: 'newAgregatedIdea'}
+		}
 	})
 
 
