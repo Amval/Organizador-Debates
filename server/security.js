@@ -25,12 +25,3 @@ Comments.allow({
         return !! userId;
     }
 });
-
-AgregatedIdeas.allow({
-    insert: function(userId, doc) {
-        return !! userId;
-    },
-    update: function(userId, doc) {
-        return !! userId;
-    }
-});

@@ -21,7 +21,3 @@ Meteor.publish('idea', (id) => {
 Meteor.publish('comments', (ideaId) => {
     return Comments.find({idea:ideaId});
 });
-
-Meteor.publish('agregatedIdeas', (debateId) => {
-	return AgregatedIdeas.find({debate: debateId});
-});
