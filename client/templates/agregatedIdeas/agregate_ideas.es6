@@ -11,7 +11,5 @@ Template.agregateIdeas.helpers({
   newAgregatedIdea: () => {
     return Template.instance().newAgregatedIdea.get()
   },
-  isNotAgregated: (idea) => {
-      return !idea.isAgregated;
-  }
+  
 });

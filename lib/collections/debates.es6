@@ -59,7 +59,7 @@ DebateSchema = new SimpleSchema({
 
 Debates.attachSchema(DebateSchema);
 
-DebateAutoValues = {
+DebateAutovalues = {
 	owner: () => {
 		return Meteor.userId();
 	},

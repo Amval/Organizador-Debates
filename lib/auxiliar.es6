@@ -63,3 +63,21 @@ _.processForm = (e, schemaName, autovalues) => {
    $('.form')[0].reset();
    _.switch(reactiveVar);
  }
+
+
+ _.newDocument = (e, name, options) => {
+   e.preventDefault();
+
+   const collection = options.collection || window[`${name}s`];
+   const schema = options.schema || window[`${name}Schema`];
+   const autovalues = options.autovalues || window[`${name}Autovalues`];
+   const route = options.route;
+   
+   const document = _.processForm(e, schema, autovalues);
+
+   collection.insert(document, {validationContext: "insertForm"}, (error, result) => {
+     if (result && !_.isUndefined(route)) {
+       Router.go(route, {_id: result});
+     }
+   });
+ }

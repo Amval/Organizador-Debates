@@ -7,16 +7,18 @@ Template.agregateIdeas.events({
   },
 
 	'submit form': function(e) {
-  		e.preventDefault();
 
+      _.newDocument(e, 'Idea', {autovalues: AgregatedIdeaAutovalues});
+      /**
   		const agregatedIdea = _.processForm(e, IdeaSchema, AgregatedIdeaAutovalues);
   		var  schemaContext = IdeaSchema.namedContext("insertForm");
   		Ideas.insert(agregatedIdea, {validationContext: "insertForm"}, function(error, result) {
         console.log(error);
   		});
+      **/
       _.cleanForm("newAgregatedIdea");
+
       const selection = Session.get('selection');
-      // FIXME: Ha de funcionar para ideas agregadas tambien
       _.each(selection, (ideaId) => {
         Ideas.update({_id: ideaId}, {
           $set: {isAgregated: true},
@@ -63,7 +65,6 @@ Template.newAgregatedIdea.helpers({
     // Transforma en una estructura de datos accesible desde la plantilla
     let data = [];
     var totalTags = tags.length;
-    var jarl="jarl"
     _.each(countedTags, (value, key) => {
       data.push({tag: key, times: value, percentage: (value/totalTags).toFixed(2)*100});
     });

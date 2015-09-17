@@ -87,7 +87,6 @@ Router.map( function() {
 			return [
 				Meteor.subscribe('ideas', this.params._id),
 				Meteor.subscribe('userData'),
-				Meteor.subscribe('agregatedIdeas', this.params._id)
 			];
 		},
 		data: function() {

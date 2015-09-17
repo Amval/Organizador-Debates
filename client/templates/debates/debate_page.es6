@@ -39,30 +39,21 @@ Template.debatePage.events({
     // Su valor rige la inserción dinámica de un formulario para
     // anyadir nuevas ideas.
     'click #new-idea': function(e) {
-      //Template.instance().newIdea.set(!Template.instance().newIdea.get());
       _.switch("newIdea");
     },
 
     'submit form': function(e) {
-        e.preventDefault();
 
-        var idea = _.processForm(e, IdeaSchema, IdeaAutovalues);
-        console.log(idea);
-        Ideas.insert(idea, {validationContext: "insertForm"}, function(error, result) {
-            console.log(error)
-        });
+        _.newDocument(e, 'Idea',{});
+        _.cleanForm('newIdea');
         // Actividad
         debateId = Session.get('currentDebate');
-        debate =  Debates.find
         Debates.update({_id: debateId}, {
           $set: {activity: Date.now()},
           $inc: {ideasCount: 1},
           $push: {activeUsers: {$each: [Meteor.userId()], $sort: 1, $slice: -4}}
         });
 
-
-        $('.form')[0].reset();
-        Template.instance().newIdea.set(false);
     },
 
 

@@ -34,8 +34,6 @@ Template.registerHelper('howMany', (elements, string) => {
   }
 });
 
-
 Template.registerHelper('thereIsNone', (collection)=> {
-  console.log(collection.count());
   return (collection.count() === 0);
 })
