@@ -43,18 +43,17 @@ Template.debatePage.events({
     },
 
     'submit form': function(e) {
-
-        _.newDocument(e, 'Idea',{});
+        _.newDocument(e, 'Idea');
         _.cleanForm('newIdea');
-        // Actividad
-        debateId = Session.get('currentDebate');
-        Debates.update({_id: debateId}, {
-          $set: {activity: Date.now()},
-          $inc: {ideasCount: 1},
-          $push: {activeUsers: {$each: [Meteor.userId()], $sort: 1, $slice: -4}}
-        });
-
+        // Actuallizar actividad
+        _.updateActiveUsers('ideas');
     },
 
 
+});
+
+Template.debatePage.onRendered(function(){
+  Debates.update({_id: Session.get('currentDebate')}, {
+    $inc: {views: 1},
+  });
 });

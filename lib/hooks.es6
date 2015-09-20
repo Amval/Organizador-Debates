@@ -9,6 +9,22 @@
 HOOKS = {};
 
 /**
+ * afterHook:
+ * Incrementa el número de visitas del debate en una
+ */
+
+HOOKS.viewPage = function() {
+  const debateId = Session.get('currentDebate');
+/**
+  Debates.update({_id: debateId}, {
+    $inc: {views: 1},
+  });
+**/
+  console.log(Debates.findOne({_id: debateId}));
+ this.next();
+};
+
+/**
  * beforeHook:
  * Obliga a que el usuario esté registrado y le invita a registrarse
  */

@@ -40,6 +40,7 @@ Router.map( function() {
 		subscriptions: function() {
 			return Meteor.subscribe('ideas', this.params._id);
 		},
+		
 		waitOn: function() {
 			return [
 				Meteor.subscribe('debate', this.params._id),
@@ -55,6 +56,7 @@ Router.map( function() {
 			'newIdea': {to: 'newIdea'},
 			'accessRequest': {to: 'accessRequest'},
 			'controlPanel': {to: 'controlPanel'},
+			'statistics': {to: 'statistics'},
 		}
 	});
 

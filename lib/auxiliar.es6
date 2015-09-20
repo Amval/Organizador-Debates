@@ -67,12 +67,12 @@ _.processForm = (e, schemaName, autovalues) => {
 
  _.newDocument = (e, name, options) => {
    e.preventDefault();
-
+   var options = options || {};
    const collection = options.collection || window[`${name}s`];
    const schema = options.schema || window[`${name}Schema`];
    const autovalues = options.autovalues || window[`${name}Autovalues`];
    const route = options.route;
-   
+
    const document = _.processForm(e, schema, autovalues);
 
    collection.insert(document, {validationContext: "insertForm"}, (error, result) => {
@@ -80,4 +80,41 @@ _.processForm = (e, schemaName, autovalues) => {
        Router.go(route, {_id: result});
      }
    });
+ }
+
+/**
+ * Actualiza la lista de actividad de un debate.
+ * La lista contiene los ultimos usuarios en participar:
+ * - Sin repeticiones
+ * - Ultimo usuario activo es el primer elemento
+ * @param {String} collection - coleccion donde ha habido actividad (nuevo comentario, idea...)
+ */
+ _.updateActiveUsers = (collection) => {
+   const elementsCount = `${collection}Count`
+
+   const debateId = Session.get('currentDebate');
+   const userId = Meteor.userId();
+   // Maxima longitud de la lista
+   const maxLength = 4;
+   // Lista de usuarios activos
+   let activeUsers = Debates.findOne({_id: debateId}).activeUsers;
+
+   // Elimina al usuario de la lista si ya esta incluido
+   if (_.includes(activeUsers, userId)) {
+     _.remove(activeUsers, (item => {
+       return item === userId;
+     }))
+   }
+   // Lo mete a la lista desde la izquierda
+   activeUsers.unshift(userId);
+   // Elimina un elemento por la derecha si la lista excede el maximo establecido
+   if (activeUsers.length > maxLength) {
+     activeUsers = _.dropRight(activeUsers)
+   };
+
+   Debates.update({_id: debateId}, {
+     $set: {activity: Date.now(), activeUsers: activeUsers},
+     $inc: {elementsCount: 1}
+   });
+
  }

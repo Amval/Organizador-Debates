@@ -1,9 +1,9 @@
 Meteor.publish('debates', (id) => {
-	return Debates.find({members: id},{sort:{activity: -1}});
+	return Debates.find({members: id}, {sort: {activity: -1}});
 });
 
 Meteor.publish('debate', (id) => {
-	return Debates.find({_id: id});
+	return Debates.find({_id: id}, {limit:1});
 });
 
 Meteor.publish('userData', () => {
@@ -15,7 +15,7 @@ Meteor.publish('ideas', (debateId) => {
 });
 
 Meteor.publish('idea', (id) => {
-    return Ideas.find({_id:id});
+    return Ideas.find({_id:id},{limit: 1});
 });
 
 Meteor.publish('comments', (ideaId) => {

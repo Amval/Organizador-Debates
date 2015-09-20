@@ -12,6 +12,7 @@ Debates = new Mongo.Collection("debates");
  * - Numero de votos
  * - Actividad (fecha de ultima idea/comentario introducida)
  * - userId de ultimos participantes (añadieron nueva idea/comentario)
+ * - Numero de visitas a la página
  */
 DebateSchema = new SimpleSchema({
 	title: {
@@ -53,6 +54,10 @@ DebateSchema = new SimpleSchema({
 	},
 	activeUsers: {
 		type: [String]
+	},
+	views: {
+		type: Number,
+		min: 0
 	}
 
 });
@@ -80,5 +85,8 @@ DebateAutovalues = {
 	},
 	activeUsers: () => {
 		return [Meteor.userId()];
+	},
+	views: () => {
+		return 0;
 	},
 }

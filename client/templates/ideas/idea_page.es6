@@ -14,26 +14,20 @@ Template.ideaPage.helpers({
 
 
 Template.ideaPage.events({
+  
     'click #new-comment': (e) => {
         e.preventDefault();
         _.switch("newComment");
     },
 
     'submit form': (e) => {
-
       _.newDocument(e, 'Comment');
       _.cleanForm('newComment');
-        // Actualizar informacion relativa al debate
-        debateId = Session.get('currentDebate');
-        Debates.update({_id: debateId}, {
-          $set: {activity: Date.now()},
-          $inc: {commentsCount: 1},
-          $push: {activeUsers: {$each: [Meteor.userId()], $sort: 1, $slice: -4}}
-        });
-        // Actualizar informacion relativa al debate
-        ideaId = Session.get('currentIdea');
-        Ideas.update({_id: ideaId}, {
-          $inc: {commentsCount: 1},
-        });
+      _.updateActiveUsers('comments');
+      // Actualizar informacion relativa al debate
+      const ideaId = Session.get('currentIdea');
+      Ideas.update({_id: ideaId}, {
+        $inc: {commentsCount: 1},
+      });
     },
 })

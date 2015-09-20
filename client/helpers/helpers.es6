@@ -36,4 +36,11 @@ Template.registerHelper('howMany', (elements, string) => {
 
 Template.registerHelper('thereIsNone', (collection)=> {
   return (collection.count() === 0);
-})
+});
+
+Template.registerHelper('getPlural', (elements, string) => {
+  if (_.isArray(elements)) {
+    elements = elements.length;
+  };
+  return `${string}${(elements!==1 ? 's':'')}`;
+});

@@ -28,6 +28,9 @@
 					{{#markdown}}{{description}}{{/markdown}}
 				</div>
 			</div>
+			<div class="ui segment">
+				{{> yield "statistics"}}
+			</div>
 			<a class="ui primary submit labeled icon button" id="new-idea"><i class="idea icon"></i> Añadir Idea</a>
 			{{#if newIdea}}
 				{{>yield "newIdea"}}
@@ -46,5 +49,47 @@
 			{{/masonryContainer}}
 		</div>
 
+	</div>
+</template>
+
+<template name="statistics">
+	<div class="ui four mini statistics">
+		<div class="ui statistic">
+			<div class="value">
+				<i class="idea icon"></i>
+				{{ideasCount}}
+			</div>
+			<div class="label">
+				{{getPlural ideasCount "Idea"}}
+			</div>
+		</div>
+		<div class="ui statistic">
+			<div class="value">
+				<i class="comments icon"></i>
+				{{commentsCount}}
+			</div>
+			<div class="label">
+				{{getPlural commentsCount "Comentario"}}
+			</div>
+		</div>
+		<div class="ui statistic">
+			<div class="value">
+				<i class="users icon"></i>
+				{{howMany members ''}}
+			</div>
+			<div class="label">
+				{{getPlural members "Usuario"}}
+			</div>
+		</div>
+
+		<div class="ui statistic">
+			<div class="value">
+				<i class="eye icon"></i>
+				{{views}}
+			</div>
+			<div class="label">
+				{{getPlural views "Visita"}}
+			</div>
+		</div>
 	</div>
 </template>
