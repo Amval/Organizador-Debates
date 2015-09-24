@@ -1,0 +1,19 @@
+<template name="containedIdeas">
+  {{subscribeIdeas debate}}
+  {{#each ideas}}
+    {{#with getIdea this}}
+      {{> ideaItemSmall }}
+    {{/with}}
+  {{/each}}
+</template>
+
+<template name="ideaItemSmall">
+  <div class="ui stacked segment">
+    <div class="ui header">
+    <a href="{{pathFor 'ideaPage'}}">
+      <i class="idea icon"></i>
+      {{title}}
+    </a>
+    </div>
+  </div>
+</template>

@@ -59,7 +59,7 @@ _.processForm = (e, schemaName, autovalues) => {
 /**
  * Limpiar formulario
  */
- _.cleanForm = (reactiveVar) => {
+ _.cleanForm = reactiveVar => {
    $('.form')[0].reset();
    _.switch(reactiveVar);
  }
@@ -89,8 +89,11 @@ _.processForm = (e, schemaName, autovalues) => {
  * - Ultimo usuario activo es el primer elemento
  * @param {String} collection - coleccion donde ha habido actividad (nuevo comentario, idea...)
  */
- _.updateActiveUsers = (collection) => {
-   const elementsCount = `${collection}Count`
+ _.updateActiveUsers = collection => {
+   const name = `${collection}Count`
+   var query = {};
+   query[name] = 1;
+   console.log(query);
 
    const debateId = Session.get('currentDebate');
    const userId = Meteor.userId();
@@ -114,7 +117,7 @@ _.processForm = (e, schemaName, autovalues) => {
 
    Debates.update({_id: debateId}, {
      $set: {activity: Date.now(), activeUsers: activeUsers},
-     $inc: {elementsCount: 1}
+     $inc: query
    });
 
  }

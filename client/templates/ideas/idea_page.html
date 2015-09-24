@@ -19,6 +19,9 @@
         <div class="content">
           {{#markdown}}{{description}}{{/markdown}}
         </div>
+        {{#if containsIdeas}}
+          {{> yield "containedIdeas"}}
+        {{/if}}
       </div>
 
       <div id="new-comment" class="ui primary submit labeled icon button">

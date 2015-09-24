@@ -40,7 +40,7 @@ Router.map( function() {
 		subscriptions: function() {
 			return Meteor.subscribe('ideas', this.params._id);
 		},
-		
+
 		waitOn: function() {
 			return [
 				Meteor.subscribe('debate', this.params._id),
@@ -63,7 +63,10 @@ Router.map( function() {
 	this.route('/debate/idea/:_id', {
 		name: 'ideaPage',
 		subscriptions: function() {
-		  return Meteor.subscribe('comments',this.params._id);
+		  return [
+				Meteor.subscribe('comments',this.params._id),
+				Meteor.subscribe('debate', Session.get('currentDebate'))
+			];
 		},
 		waitOn: function() {
 		  return [
@@ -77,7 +80,8 @@ Router.map( function() {
 		},
 		yieldRegions: {
 			'newComment': {to: 'newComment'},
-			'commentItem' : {to : 'commentItem'}
+			'commentItem' : {to : 'commentItem'},
+			'containedIdeas': {to: 'containedIdeas'}
 		}
 	});
 
@@ -92,7 +96,7 @@ Router.map( function() {
 			];
 		},
 		data: function() {
-			return AgregatedIdeas.find();
+			return Ideas.find();
 		},
 		yieldRegions: {
 			'newAgregatedIdea': {to: 'newAgregatedIdea'}

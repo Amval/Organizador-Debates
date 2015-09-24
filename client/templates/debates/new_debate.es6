@@ -1,6 +1,6 @@
 Template.newDebate.events({
 
-	'submit form': (e) => {
+	'submit form': e => {
 		_.newDocument(e,'Debate',{route:'debatePage'});
 	}
 })
