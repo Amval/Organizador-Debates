@@ -8,6 +8,8 @@
 					{{#if accessRequest}}
 						{{> yield "accessRequest"}}
 					{{/if}}
+				{{else}}
+					{{>yield "leaveDebate"}}
 				{{/if}}
 			<div class="ui segment box">
 				{{>bigAvatar _id=owner}}

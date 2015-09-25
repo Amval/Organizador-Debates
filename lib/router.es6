@@ -57,6 +57,7 @@ Router.map( function() {
 			'accessRequest': {to: 'accessRequest'},
 			'controlPanel': {to: 'controlPanel'},
 			'statistics': {to: 'statistics'},
+			'leaveDebate': {to: 'leaveDebate'},
 		}
 	});
 
