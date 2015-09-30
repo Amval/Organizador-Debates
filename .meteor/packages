@@ -29,8 +29,9 @@ markdown
 grigio:babel
 fourseven:scss
 rzymek:moment
-mediumeditor:mediumeditor
 sjors:meteor-masonry
 voodoohop:masonrify
 semantic:ui-css
 softwarerero:accounts-t9n
+jhartma:quill
+lookback:emails

@@ -121,3 +121,34 @@ _.processForm = (e, schemaName, autovalues) => {
    });
 
  }
+
+ _.standardValidation = () =>{
+   $('.ui .form').form({
+ 	 title: {
+ 		 identifier: 'title',
+ 		 rules: [
+ 			 {
+ 				 type: 'empty',
+ 				 prompt: 'Introduce un título.'
+ 			 },
+ 			 {
+ 				 type: 'minLength[20]',
+ 				 prompt: 'El título es demasiado corto. (Mínimo 20 caracteres)'
+ 			 },
+ 			 {
+ 				 type: 'maxLength[200]',
+ 				 prompt: 'El título es demasiado largo. Puedes explayarte en la descripción.'
+ 			 },
+ 		 ]
+ 	 },
+ 	 description: {
+ 		 identifier: 'description',
+ 		 rules: [
+ 			 {
+ 				 type: 'empty',
+ 				 prompt: 'Introduce una descripción.'
+ 			 }
+ 		 ]
+ 	 },
+  })
+ }

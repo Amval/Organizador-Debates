@@ -1,4 +1,4 @@
-T9n.setLanguage("es")
+T9n.setLanguage("es_ES")
 //Routes
 AccountsTemplates.configureRoute('changePwd');
 AccountsTemplates.configureRoute('enrollAccount');

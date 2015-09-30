@@ -81,3 +81,7 @@ Tracker.autorun( () => {
   let tagsSuggestions = Session.get('tagsSuggestions');
   $('.popup .ui.label').popup()
 });
+
+Template.newAgregatedIdea.onRendered(()=> {
+  _.standardValidation();
+})

@@ -57,3 +57,7 @@ Template.debatePage.onRendered(function(){
     $inc: {views: 1},
   });
 });
+
+Template.newIdea.onRendered(function() {
+  _.standardValidation();
+})

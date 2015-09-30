@@ -14,7 +14,7 @@ Template.ideaPage.helpers({
 
 
 Template.ideaPage.events({
-  
+
     'click #new-comment': (e) => {
         e.preventDefault();
         _.switch("newComment");
@@ -30,4 +30,26 @@ Template.ideaPage.events({
         $inc: {commentsCount: 1},
       });
     },
-})
+});
+
+Template.newComment.onRendered( () => {
+  $('.ui .form').form({
+  title: {
+    identifier: 'content',
+    rules: [
+      {
+        type: 'empty',
+        prompt: 'Introduce el contenido del comentario.'
+      },
+      {
+        type: 'minLength[20]',
+        prompt: 'El comentario es demasiado corto (Mínimo 20 caracteres).'
+      },
+      {
+        type: 'maxLength[2500]',
+        prompt: 'El comentario es demasiado largo (Máximo 2500 caracteres).'
+      },
+    ]
+  },
+ })
+});

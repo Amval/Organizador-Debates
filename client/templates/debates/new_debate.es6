@@ -6,5 +6,6 @@ Template.newDebate.events({
 })
 
 Template.newDebate.onRendered( () => {
-	//const editor = new MediumEditor('#description');
+	// Validacion del lado del cliente
+	_.standardValidation();
 });
